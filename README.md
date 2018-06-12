@@ -1,10 +1,9 @@
 ## StorageDBWebScraper
 
-Install virtual environment
+Switch to virtual environment
 
 
 ```
-python3 -m venv venv
 . ./venv/bin/activate
 ```
 
