@@ -44,13 +44,38 @@ def parse_GSP():
 
     unitSizes = html.find_all("div", class_= "container size")
     for s in unitSizes:
-        units.append(Unit("", "", s.text.strip()))
+        units.append(Unit(s.text.strip(), "", "", ""))
     unitNames = html.find_all("div", class_="description", limit = len(units))
     for i, d in enumerate(unitNames):
-        units[i].setName(d.text.strip())
+        desc = d.text.strip()
+        if "Climate" in desc:
+            units[i].setType("Climate")
+        else:
+            units[i].setType("Non-Climate")
+        if "Ground" in desc:
+            units[i].setFloor("1")
     unitPrices = html.find_all("div", class_ = "price")
     for i, p in enumerate(unitPrices):
         units[i].setPrice(p.text.strip())
+
+    return units
+
+def parse_EZ():
+    raw_html = simple_get('https://e-zlakewaystorage.com/services-and-pricing/')
+    html = BeautifulSoup(raw_html, "html.parser")
+    units = []
+
+    unitSizes = html.find_all("strong")
+    for s in unitSizes:
+        if len(s.text.strip()) < 5:
+            units.append(Unit(s.text.strip(), "", "", ""))
+
+    # unitNames = html.find_all("div", class_="description", limit = len(units))
+    # for i, d in enumerate(unitNames):
+    #     units[i].setName(d.text.strip())
+    # unitPrices = html.find_all("div", class_ = "price")
+    # for i, p in enumerate(unitPrices):
+    #     units[i].setPrice(p.text.strip())
 
     return units
 
@@ -61,13 +86,31 @@ def parse_PS_beecave():
 
     unitSizes = html.find_all("div", class_= "srp_label srp_font_14")
     for s in unitSizes:
-        units.append(Unit("", "", s.text.strip()))
-    unitNames = html.find_all("div", class_="srp_label plp", limit = len(units))
-    for i, d in enumerate(unitNames):
-        units[i].setName(d.text.strip())
+        units.append(Unit(s.text.strip(), "", "", ""))
     unitPrices = html.find_all("div", class_ = "srp_label alt-price")
     for i, p in enumerate(unitPrices):
-        units[i].setPrice(p.text.strip())
+        units[i].setPrice(p.text.strip().split("/")[0])
+    features = []
+    for divtag in html.find_all('div', {'class': 'srp_res_clm srp_clm120'}):
+        for i, ultag in enumerate(divtag.find_all('ul')):
+            string = ""
+            for litag in ultag.find_all('li'):
+                string+=litag.text + " "
+            features.append(string)
+    for i, f in enumerate(features):
+        if "Climate" in f:
+            units[i].setType("Climate")
+        else:
+            units[i].setType("Non-Climate")
+        if "1st" in f:
+            units[i].setFloor("1")
+        else:
+            units[i].setFloor("2")
+        # index = f.find('st')
+        # if index < 0:
+        #     units[i].setFloor("Ground")
+        # else:
+        #     units[i].setFloor(f[index-1])
     return units
 
 def parse_stowaway():
@@ -81,7 +124,7 @@ def parse_stowaway():
 
     unitSizes = html.find_all("div", class_= "size_txt")
     for s in unitSizes:
-        units.append(Unit("", "", s.text.strip()))
+        units.append(Unit(s.text.strip(), "", "", ""))
     unitNames = html.find_all("span", class_="ls_unit_area", limit = len(units))
     for i, d in enumerate(unitNames):
         units[i].setName(d.text.strip())
@@ -97,7 +140,7 @@ def parse_southlake():
 
     unitSizes = html.find_all("h4", class_= "primary-color")
     for s in unitSizes:
-        units.append(Unit("", "", s.text.strip()))
+        units.append(Unit(s.text.strip(), "", "", ""))
     unitNames = html.find_all("p", class_="unit-description", limit = len(units))
     for i, d in enumerate(unitNames):
         units[i].setName(d.text.strip())
@@ -106,24 +149,54 @@ def parse_southlake():
         units[i].setPrice(p.text.strip())
     return units
 
+def parse_cubesmart_lakeway():
+    browser = webdriver.Safari()
+    browser.get("https://www.cubesmart.com/texas-self-storage/lakeway-self-storage/3190.html")
+    raw_html = browser.page_source
+    html = BeautifulSoup(raw_html, "html.parser")
+    units = []
+    # print(html)
+    unitSizes = html.find_all("p", attrs={"itemprop":"name"})
+    for s in unitSizes:
+        units.append(Unit(s.text.strip(), "", "", ""))
+    unitPrices = html.find_all("div", class_ = "promoprice showVdm")
+    for i, p in enumerate(unitPrices):
+        units[i].setPrice("$" + p['content'])
+    return units
+    # units = []
+    #
+    # unitSizes = html.find_all("h4", class_= "primary-color")
+    # for s in unitSizes:
+    #     units.append(Unit("", "", s.text.strip()))
+    # unitNames = html.find_all("p", class_="unit-description", limit = len(units))
+    # for i, d in enumerate(unitNames):
+    #     units[i].setName(d.text.strip())
+    # unitPrices = html.find_all("strong", class_ = "price primary-color pull-right")
+    # for i, p in enumerate(unitPrices):
+    #     units[i].setPrice(p.text.strip())
+    # return units
+
 def main():
     GSP = parse_GSP()
     print("================ GREEN STORAGE PLUS ================")
     for u in GSP:
         print(u)
-    print("====================================================")
 
     PS = parse_PS_beecave()
     print("============= PUBLIC STORAGE @ BEE CAVE ============")
     for u in PS:
         print(u)
-    print("====================================================")
 
     SL = parse_southlake()
     print("================ SOUTHLAKE WAREHOUSES ==============")
     for u in SL:
         print(u)
-    print("====================================================")
+
+    # CSL = parse_cubesmart_lakeway()
+    # print("================ CUBESMART LAKEWAY ==============")
+    # for u in CSL:
+    #     print(u)
+    parse_EZ()
 
 if __name__ == "__main__":
     main()
