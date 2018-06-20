@@ -4,7 +4,13 @@ from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
 from unit import Unit
+from facility import Facility
 from selenium import webdriver
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 def simple_get(url):
     """
@@ -37,19 +43,30 @@ def is_good_response(resp):
 def log_error(e):
     print(e)
 
-def parse_GSP():
-    raw_html = simple_get('https://www.greenstorageplus.com/self-storage-spicewood-tx-f7744')
+def parse_GSP(website):
+    # website = input("Enter Green Storage Plus facility website: ")
+    raw_html = simple_get(website)
     html = BeautifulSoup(raw_html, "html.parser")
     units = []
+
+    name = html.find_all("span",  attrs={"itemprop":"name"})[0].text.strip()
+    street = html.find_all("div", attrs={"itemprop":"streetAddress"})[0].text.strip()
+    city = html.find_all("span", attrs={"itemprop":"addressLocality"})[0].text.strip()
+    state = html.find_all("span", attrs={"itemprop":"addressRegion"})[0].text.strip()
+    zip = html.find_all("span", attrs={"itemprop":"postalCode"})[0].text.strip()
+    address = street + ", " + city + ", " + state + " " + zip
 
     unitSizes = html.find_all("div", class_= "container size")
     for s in unitSizes:
         units.append(Unit(s.text.strip(), "", "", ""))
-    unitNames = html.find_all("div", class_="description", limit = len(units))
+    unitNames = html.find_all("div", class_="description pure-visible-sm", limit = len(units))
     for i, d in enumerate(unitNames):
+        # print(d)
         desc = d.text.strip()
         if "Climate" in desc:
             units[i].setType("Climate")
+        elif "Drive" in desc:
+            units[i].setType("Parking")
         else:
             units[i].setType("Non-Climate")
         if "Ground" in desc:
@@ -58,7 +75,7 @@ def parse_GSP():
     for i, p in enumerate(unitPrices):
         units[i].setPrice(p.text.strip())
 
-    return units
+    return Facility(name, website, address, units)
 
 def parse_EZ():
     raw_html = simple_get('https://e-zlakewaystorage.com/services-and-pricing/')
@@ -79,10 +96,18 @@ def parse_EZ():
 
     return units
 
-def parse_PS_beecave():
-    raw_html = simple_get('https://www.publicstorage.com/texas/self-storage-bee-cave-tx/78738-self-storage/2190#/?zl=16&vd=0.47440338227124196&lat=0&lng=0&sort=dasc&ssort=dasc&vsort=dasc&v20=0&v35=0&v50=0&vc=0&vu=0&ve=0&cc=0&da=0&ms=1,2,3,4,5,6,7,8')
+def parse_PS(website):
+    raw_html = simple_get(website)
     html = BeautifulSoup(raw_html, "html.parser")
     units = []
+
+    # facilityTitle = html.find_all("span",  attrs={"id":"FacilityTitle"})
+    street = html.find_all("span", attrs={"itemprop":"streetAddress"})[0].text.strip()
+    city = html.find_all("span", attrs={"itemprop":"addressLocality"})[0].text.strip()
+    state = html.find_all("span", attrs={"itemprop":"addressRegion"})[0].text.strip()
+    zip = html.find_all("span", attrs={"itemprop":"postalCode"})[0].text.strip()
+    address = street + ", " + city + ", " + state + " " + zip
+    name = address
 
     unitSizes = html.find_all("div", class_= "srp_label srp_font_14")
     for s in unitSizes:
@@ -111,27 +136,48 @@ def parse_PS_beecave():
         #     units[i].setFloor("Ground")
         # else:
         #     units[i].setFloor(f[index-1])
-    return units
+    return Facility(name, website, address, units)
 
-def parse_stowaway():
+def parse_stowaway(website):
     # raw_html = simple_get('https://www.lakewayselfstorage.com/units-available/')
     browser = webdriver.Safari()
-    browser.get("https://www.lakewayselfstorage.com/units-available/")
-    raw_html = browser.page_source
-    html = BeautifulSoup(raw_html, "html.parser")
-    print(html)
-    units = []
+    browser.get(website)
+    try:
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        element = WebDriverWait(browser, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "targetContainer"))
+        )
+        # browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        # element = WebDriverWait(browser, 10).until(
+        #     EC.visibility_of_element_located((By.ID, "ember945"))
+        # )
+        raw_html = browser.page_source
+        html = BeautifulSoup(raw_html, "html.parser")
+        # print(html)
+        units = []
 
-    unitSizes = html.find_all("div", class_= "size_txt")
-    for s in unitSizes:
-        units.append(Unit(s.text.strip(), "", "", ""))
-    unitNames = html.find_all("span", class_="ls_unit_area", limit = len(units))
-    for i, d in enumerate(unitNames):
-        units[i].setName(d.text.strip())
-    unitPrices = html.find_all("span", class_ = "ls_unit_price")
-    for i, p in enumerate(unitPrices):
-        units[i].setPrice(p.text.strip())
-    return units
+        name = html.find_all("strong",  attrs={"itemprop":"name"})[0].text.strip()
+
+        # street = html.find_all("p", attrs={"itemprop":"streetAddress"})[0].text.strip()
+        # city = html.find_all("span", attrs={"itemprop":"addressLocality"})[0].text.strip()
+        # state = html.find_all("span", attrs={"itemprop":"addressRegion"})[0].text.strip()
+        # zip = html.find_all("span", attrs={"itemprop":"postalCode"})[0].text.strip()
+        # address = street + ", " + city + ", " + state + " " + zip
+        address = html.find_all("span", attrs={"itemprop":"address"})[0].text.strip()
+
+        unitSizes = html.find_all("div", class_= "size_txt")
+        for s in unitSizes:
+            units.append(Unit(s.text.strip(), "", "", ""))
+        unitNames = html.find_all("span", class_="ls_unit_area", limit = len(units))
+        for i, d in enumerate(unitNames):
+            units[i].setName(d.text.strip())
+        unitPrices = html.find_all("span", class_ = "ls_unit_price")
+        for i, p in enumerate(unitPrices):
+            units[i].setPrice(p.text.strip())
+    finally:
+        browser.quit()
+
+    return Facility(name, website, address, units)
 
 def parse_southlake():
     raw_html = simple_get('http://www.southlakewarehouses.com/pages/rent')
@@ -149,20 +195,29 @@ def parse_southlake():
         units[i].setPrice(p.text.strip())
     return units
 
-def parse_cubesmart_lakeway():
+def parse_cubesmart(website):
     browser = webdriver.Safari()
-    browser.get("https://www.cubesmart.com/texas-self-storage/lakeway-self-storage/3190.html")
+    browser.get(website)
     raw_html = browser.page_source
     html = BeautifulSoup(raw_html, "html.parser")
     units = []
     # print(html)
+    name = html.find_all("h1",  attrs={"class":"csCBE"})[0].text.strip()
+    street = html.find_all("p", attrs={"itemprop":"streetAddress"})[0].text.strip()
+    city = html.find_all("span", attrs={"itemprop":"addressLocality"})[0].text.strip()
+    state = html.find_all("span", attrs={"itemprop":"addressRegion"})[0].text.strip()
+    zip = html.find_all("span", attrs={"itemprop":"postalCode"})[0].text.strip()
+    address = street + ", " + city + ", " + state + " " + zip
+
     unitSizes = html.find_all("p", attrs={"itemprop":"name"})
     for s in unitSizes:
         units.append(Unit(s.text.strip(), "", "", ""))
+        # print(s.text.strip())
     unitPrices = html.find_all("div", class_ = "promoprice showVdm")
     for i, p in enumerate(unitPrices):
         units[i].setPrice("$" + p['content'])
-    return units
+    browser.quit()
+    return Facility(name, website, address, units)
     # units = []
     #
     # unitSizes = html.find_all("h4", class_= "primary-color")
@@ -176,27 +231,154 @@ def parse_cubesmart_lakeway():
     #     units[i].setPrice(p.text.strip())
     # return units
 
+
+def parse_extra(website):
+    browser = webdriver.Safari()
+    # website = input("Enter ExtraSpace facility website: ")
+    browser.get(website)
+    raw_html = browser.page_source
+    html = BeautifulSoup(raw_html, "html.parser")
+    units = []
+    # print(html)
+    facilityTitle = html.find_all("span",  attrs={"id":"FacilityTitle"})
+    street = html.find_all("span", attrs={"itemprop":"streetAddress"})[0].text.strip()
+    city = html.find_all("span", attrs={"itemprop":"addressLocality"})[0].text.strip()
+    state = html.find_all("span", attrs={"itemprop":"addressRegion"})[0].text.strip()
+    zip = html.find_all("span", attrs={"itemprop":"postalCode"})[0].text.strip()
+    address = street + ", " + city + ", " + state + " " + zip
+
+    # print(facilityTitle)
+    name = facilityTitle[0].text.strip()
+    # print("Loading units for " + name + "....")
+    unitSizes = html.find_all("div", attrs={"itemprop":"description"})
+    for s in unitSizes:
+        if len(s.text.strip()) < 10:
+            units.append(Unit(s.text.strip(), "", "", ""))
+    unitPrices = html.find_all("div", attrs={"itemprop":"price"})
+    for i, p in enumerate(unitPrices):
+        units[i].setPrice(p['content'])
+
+    features = []
+    for divtag in html.find_all('div', {'class': 'features'}):
+        for i, ultag in enumerate(divtag.find_all('ul')):
+            string = ""
+            for litag in ultag.find_all('li'):
+                string+=litag.text + " "
+            features.append(string)
+    for i, f in enumerate(features):
+        if "Climate" in f:
+            units[i].setType("Climate")
+        else:
+            units[i].setType("Non-Climate")
+        if "1st" in f:
+            units[i].setFloor("1")
+        # else:
+        #     units[i].setFloor("2")
+
+    # unitPrices = html.find_all("div", class_ = "promoprice showVdm")
+    # for i, p in enumerate(unitPrices):
+    #     units[i].setPrice("$" + p['content'])
+    browser.quit()
+
+    return Facility(name, website, address, units)
+    # return units
+
+def parse_amax(website):
+    raw_html = simple_get(website)
+    html = BeautifulSoup(raw_html, "html.parser")
+    units = []
+
+    name = html.find_all("span",  attrs={"itemprop":"name"})[0].text.strip()
+    street = html.find_all("div", attrs={"itemprop":"streetAddress"})[0].text.strip()
+    city = html.find_all("span", attrs={"itemprop":"addressLocality"})[0].text.strip()
+    state = html.find_all("span", attrs={"itemprop":"addressRegion"})[0].text.strip()
+    zip = html.find_all("span", attrs={"itemprop":"postalCode"})[0].text.strip()
+    address = street + ", " + city + ", " + state + " " + zip
+
+    unitSizes = html.find_all("div", class_= "container size")
+    for s in unitSizes:
+        units.append(Unit(s.text.strip(), "", "", ""))
+        # print(s.text.strip())
+    unitNames = html.find_all("div", class_="description pure-visible-sm", limit = len(units))
+    for i, d in enumerate(unitNames):
+        # print(d)
+        desc = d.text.strip()
+        # print(desc)
+        if "A/C" in desc:
+            units[i].setType("Climate")
+        elif "Parking" in desc:
+            units[i].setType("Parking")
+        else:
+            units[i].setType("Non-Climate")
+        # if "Ground" in desc:
+        #     units[i].setFloor("1")
+    unitPrices = html.find_all("div", class_ = "price")
+    for i, p in enumerate(unitPrices):
+        units[i].setPrice(p.text.strip())
+
+    return Facility(name, website, address, units)
+
+def parse_storeitall(website):
+    browser = webdriver.Safari()
+    browser.get(website)
+    try:
+        element = WebDriverWait(browser, 10).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "unit-info"))
+        )
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        element = WebDriverWait(browser, 10).until(
+            EC.visibility_of_element_located((By.ID, "ember945"))
+        )
+        raw_html = browser.page_source
+        html = BeautifulSoup(raw_html, "html.parser")
+        units = []
+
+        name = html.find_all("h4",  attrs={"class":"p-name"})[0].text.strip()
+        street = html.find_all("span", attrs={"class":"p-street-address"})[0].text.strip()
+        city = html.find_all("span", attrs={"class":"p-locality"})[0].text.strip()
+        state = html.find_all("span", attrs={"class":"p-region"})[0].text.strip()
+        zip = html.find_all("span", attrs={"class":"p-postal-code"})[0].text.strip()
+        address = street + ", " + city + ", " + state + " " + zip
+
+        unitSizes = html.find_all("span", attrs={"class":"sss-unit-size"})
+        for s in unitSizes:
+            if len(s.text.strip()) < 10:
+                units.append(Unit(s.text.strip(), "", "", ""))
+        unitPrices = html.find_all("span", attrs={"class":"price-value"})
+        for i, p in enumerate(unitPrices):
+            units[i].setPrice(p.text.strip())
+    finally:
+        browser.quit()
+        
+    return Facility(name, website, address, units)
+
+
 def main():
-    GSP = parse_GSP()
-    print("================ GREEN STORAGE PLUS ================")
-    for u in GSP:
-        print(u)
+    print("Writing to file....\n")
+    with open('test', 'r') as file:
+        facilities = file.readlines()
+        facilities = [line.rstrip('\n') for line in open('facilities')] # strip newline character
+        for f in facilities:
+            if "extraspace" in f:
+                print(parse_extra(f).printInfo())
+            elif "greenstorageplus" in f:
+                print(parse_GSP(f).printInfo())
+            elif "cubesmart" in f:
+                print(parse_cubesmart(f).printInfo())
+            elif "publicstorage" in f:
+                print(parse_PS(f).printInfo())
+            elif "amaxselfstorage" in f:
+                print(parse_amax(f).printInfo())
+            elif "lakewayselfstorage" in f:
+                print(parse_stowaway(f).printInfo())
+            elif "selfstoragelakeway" in f:
+                print(parse_storeitall(f).printInfo())
 
-    PS = parse_PS_beecave()
-    print("============= PUBLIC STORAGE @ BEE CAVE ============")
-    for u in PS:
-        print(u)
+        print("\n\nWebsites scraped:")
+        for s in facilities:
+            print(s + "\n")
 
-    SL = parse_southlake()
-    print("================ SOUTHLAKE WAREHOUSES ==============")
-    for u in SL:
-        print(u)
-
-    # CSL = parse_cubesmart_lakeway()
-    # print("================ CUBESMART LAKEWAY ==============")
-    # for u in CSL:
-    #     print(u)
-    parse_EZ()
+    print("Done!")
 
 if __name__ == "__main__":
     main()

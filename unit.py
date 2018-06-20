@@ -31,7 +31,11 @@ class Unit:
         self.floor = floor
         self.setDimensions(name)
 
+    def info(self):
+        return self.name + "," + self.price + "," + self.type + "," + self.floor + "," + self.width + "," + self.depth + "\n"
+
     def __str__(self):
         return "name=" + self.name + "\nprice=" + self.price + "\ntype=" + self.type + "\nfloor=" + self.floor + "\nwidth=" + self.width + " \ndepth=" + self.depth + "\n\n"
-
+    def __repr__(self):
+        return "name=" + self.name + "\nprice=" + self.price + "\ntype=" + self.type + "\nfloor=" + self.floor + "\nwidth=" + self.width + " \ndepth=" + self.depth + "\n\n"
 #TODO: name, type, width, depth, floor
