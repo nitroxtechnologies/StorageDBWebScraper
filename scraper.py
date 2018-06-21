@@ -349,34 +349,35 @@ def parse_storeitall(website):
             units[i].setPrice(p.text.strip())
     finally:
         browser.quit()
-        
+
     return Facility(name, website, address, units)
 
 
 def main():
     print("Writing to file....\n")
     with open('test', 'r') as file:
-        facilities = file.readlines()
-        facilities = [line.rstrip('\n') for line in open('facilities')] # strip newline character
-        for f in facilities:
-            if "extraspace" in f:
-                print(parse_extra(f).printInfo())
-            elif "greenstorageplus" in f:
-                print(parse_GSP(f).printInfo())
-            elif "cubesmart" in f:
-                print(parse_cubesmart(f).printInfo())
-            elif "publicstorage" in f:
-                print(parse_PS(f).printInfo())
-            elif "amaxselfstorage" in f:
-                print(parse_amax(f).printInfo())
-            elif "lakewayselfstorage" in f:
-                print(parse_stowaway(f).printInfo())
-            elif "selfstoragelakeway" in f:
-                print(parse_storeitall(f).printInfo())
+        with open('units.txt', 'w') as out:
+            facilities = file.readlines()
+            facilities = [line.rstrip('\n') for line in open('facilities')] # strip newline character
+            for f in facilities:
+                if "extraspace" in f:
+                    print(parse_extra(f).printInfo())
+                elif "greenstorageplus" in f:
+                    print(parse_GSP(f).printInfo())
+                elif "cubesmart" in f:
+                    print(parse_cubesmart(f).printInfo())
+                elif "publicstorage" in f:
+                    print(parse_PS(f).printInfo())
+                elif "amaxselfstorage" in f:
+                    print(parse_amax(f).printInfo())
+                elif "lakewayselfstorage" in f:
+                    print(parse_stowaway(f).printInfo())
+                elif "selfstoragelakeway" in f:
+                    print(parse_storeitall(f).printInfo())
 
-        print("\n\nWebsites scraped:")
-        for s in facilities:
-            print(s + "\n")
+            print("\n\nWebsites scraped:")
+            for s in facilities:
+                print(s + "\n")
 
     print("Done!")
 
