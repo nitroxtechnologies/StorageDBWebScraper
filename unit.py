@@ -5,6 +5,8 @@ class Unit:
 
     def setPrice(self, price):
         self.price = (''.join(ele for ele in price if ele.isdigit() or ele == '.'))
+        if "." not in self.price:
+            self.price += ".00"
 
 
     def setDimensions(self, s):
@@ -16,6 +18,7 @@ class Unit:
         else:
             self.width = (''.join(ele for ele in dims[0] if ele.isdigit() or ele == '.'))
             self.depth = (''.join(ele for ele in dims[1] if ele.isdigit() or ele == '.'))
+        self.name = self.width + "' x " + self.depth + "'"
 
 
     def setType(self, s):
@@ -32,7 +35,24 @@ class Unit:
         self.setDimensions(name)
 
     def info(self):
-        return self.name + "," + self.price + "," + self.type + "," + self.floor + "," + self.width + "," + self.depth + "\n"
+        info = ".\n"
+        info += self.name + "\n"
+        if self.type == "":
+            self.type = "Non-Climate"
+        info += self.type + "\n"
+        info += self.width + "\n"
+        info += self.depth + "\n"
+        info += "\n"
+        if self.floor == "":
+            self.floor = "1"
+        info += self.floor + "\n"
+        info += "\n"
+        info += "\n"
+        if self.price == "":
+            self.price = "0.00"
+        info += self.price + "\n"
+        info += "\n"
+        return info
 
     def __str__(self):
         return "name=" + self.name + "\nprice=" + self.price + "\ntype=" + self.type + "\nfloor=" + self.floor + "\nwidth=" + self.width + " \ndepth=" + self.depth + "\n\n"

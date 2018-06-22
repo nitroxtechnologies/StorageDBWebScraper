@@ -75,7 +75,7 @@ def parse_GSP(website):
     for i, p in enumerate(unitPrices):
         units[i].setPrice(p.text.strip())
 
-    return Facility(name, website, address, units)
+    return Facility("Green Storage Plus", "https://https://www.greenstorageplus.com/" ,name, website, address, units)
 
 def parse_EZ():
     raw_html = simple_get('https://e-zlakewaystorage.com/services-and-pricing/')
@@ -136,7 +136,7 @@ def parse_PS(website):
         #     units[i].setFloor("Ground")
         # else:
         #     units[i].setFloor(f[index-1])
-    return Facility(name, website, address, units)
+    return Facility("Public Storage", "https://www.publicstorage.com/", name, website, address, units)
 
 def parse_stowaway(website):
     # raw_html = simple_get('https://www.lakewayselfstorage.com/units-available/')
@@ -177,7 +177,7 @@ def parse_stowaway(website):
     finally:
         browser.quit()
 
-    return Facility(name, website, address, units)
+    return Facility("Stowaway", "https://www.selfstoragelakeway.com/l", name, website, address, units)
 
 def parse_southlake():
     raw_html = simple_get('http://www.southlakewarehouses.com/pages/rent')
@@ -217,7 +217,7 @@ def parse_cubesmart(website):
     for i, p in enumerate(unitPrices):
         units[i].setPrice("$" + p['content'])
     browser.quit()
-    return Facility(name, website, address, units)
+    return Facility("Cubesmart", "https://www.cubesmart.com/", name, website, address, units)
     # units = []
     #
     # unitSizes = html.find_all("h4", class_= "primary-color")
@@ -280,7 +280,7 @@ def parse_extra(website):
     #     units[i].setPrice("$" + p['content'])
     browser.quit()
 
-    return Facility(name, website, address, units)
+    return Facility("ExtraSpace" , "https://www.extraspace.com/", name, website, address, units)
     # return units
 
 def parse_amax(website):
@@ -316,7 +316,7 @@ def parse_amax(website):
     for i, p in enumerate(unitPrices):
         units[i].setPrice(p.text.strip())
 
-    return Facility(name, website, address, units)
+    return Facility("A-Max Self Storage", "https://www.amaxselfstorage.com/", name, website, address, units)
 
 def parse_storeitall(website):
     browser = webdriver.Safari()
@@ -350,36 +350,33 @@ def parse_storeitall(website):
     finally:
         browser.quit()
 
-    return Facility(name, website, address, units)
+    return Facility("Store-It-All Storage", "https://www.amaxselfstorage.com/",name, website, address, units)
 
 
 def main():
-    print("Writing to file....\n")
-    with open('test', 'r') as file:
-        with open('units.txt', 'w') as out:
-            facilities = file.readlines()
-            facilities = [line.rstrip('\n') for line in open('facilities')] # strip newline character
-            for f in facilities:
-                if "extraspace" in f:
-                    print(parse_extra(f).printInfo())
-                elif "greenstorageplus" in f:
-                    print(parse_GSP(f).printInfo())
-                elif "cubesmart" in f:
-                    print(parse_cubesmart(f).printInfo())
-                elif "publicstorage" in f:
-                    print(parse_PS(f).printInfo())
-                elif "amaxselfstorage" in f:
-                    print(parse_amax(f).printInfo())
-                elif "lakewayselfstorage" in f:
-                    print(parse_stowaway(f).printInfo())
-                elif "selfstoragelakeway" in f:
-                    print(parse_storeitall(f).printInfo())
-
-            print("\n\nWebsites scraped:")
-            for s in facilities:
-                print(s + "\n")
-
-    print("Done!")
+    with open('facilities', 'r') as file:
+        # with open('units.txt', 'w') as out:
+        facilities = file.readlines()
+        facilities = [line.rstrip('\n') for line in open('facilities')] # strip newline character
+        for f in facilities:
+            if "extraspace" in f:
+                print(parse_extra(f).printInfo(), end='')
+            elif "greenstorageplus" in f:
+                print(parse_GSP(f).printInfo(), end='')
+            elif "cubesmart" in f:
+                print(parse_cubesmart(f).printInfo(), end='')
+            elif "publicstorage" in f:
+                print(parse_PS(f).printInfo(), end='')
+            elif "amaxselfstorage" in f:
+                print(parse_amax(f).printInfo(), end='')
+            elif "lakewayselfstorage" in f:
+                print(parse_stowaway(f).printInfo(), end='')
+            elif "selfstoragelakeway" in f:
+                print(parse_storeitall(f).printInfo(),end='')
+        file.close()
+            # print("\n\nWebsites scraped:")
+            # for s in facilities:
+            #     print(s + "\n")
 
 if __name__ == "__main__":
     main()
