@@ -272,6 +272,13 @@ def parse_extra(website):
             units[i].setType("Non-Climate")
         if "1st" in f:
             units[i].setFloor("1")
+        else:
+            units[i].setFloor("2")
+        if "Drive-Up" in f:
+            units[i].setType("Parking")
+        if "RV Parking" in f:
+            units[i].setType("RV Parking")
+
         # else:
         #     units[i].setFloor("2")
 
@@ -327,7 +334,7 @@ def parse_storeitall(website):
         )
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         element = WebDriverWait(browser, 10).until(
-            EC.visibility_of_element_located((By.ID, "ember945"))
+            EC.visibility_of_element_located((By.ID, "ember940"))
         )
         raw_html = browser.page_source
         html = BeautifulSoup(raw_html, "html.parser")
@@ -344,9 +351,21 @@ def parse_storeitall(website):
         for s in unitSizes:
             if len(s.text.strip()) < 10:
                 units.append(Unit(s.text.strip(), "", "", ""))
-        unitPrices = html.find_all("span", attrs={"class":"price-value"})
+        unitPrices = html.find_all("span", attrs={"class":"sss-unit-special"})
         for i, p in enumerate(unitPrices):
-            units[i].setPrice(p.text.strip())
+            prices = p.find_all("span", attrs={"class":"price-value"})
+            if len(prices) == 0:
+                units[i].setPrice("0")
+            else:
+                units[i].setPrice(prices[0].text.strip())
+
+        unitAmenities = html.find_all("span", attrs={"class":"sss-unit-amenities"})
+        for i, p in enumerate(unitAmenities):
+            if "Climate Control" in p.text:
+                units[i].setType("Climate")
+            else:
+                units[i].setType("Non-Climate")
+
     finally:
         browser.quit()
 

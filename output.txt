@@ -3,6 +3,7 @@ Public Storage
 https://www.publicstorage.com/
 ~
 3911 Ranch Road 620 S, Bee Cave, TX 78738
+https://www.publicstorage.com/texas/self-storage-bee-cave-tx/78738-self-storage/2190#/?zl=16&vd=0.47440338227124196&lat=0&lng=0&sort=dasc&ssort=dasc&vsort=dasc&v20=0&v35=0&v50=0&vc=0&vu=0&ve=0&cc=0&da=0&ms=1,2,3,4,5,6,7,8
 3911 Ranch Road 620 S, Bee Cave, TX 78738
 
 
@@ -53,7 +54,7 @@ Climate
 1
 
 
-59.00
+73.00
 
 .
 10' x 5'
@@ -64,24 +65,47 @@ Climate
 2
 
 
-91.00
+115.00
 
 .
-10' x 15'
-Climate
+10' x 10'
+Non-Climate
 10
-15
+10
 
 2
 
 
-201.00
+210.00
+
+.
+10' x 10'
+Climate
+10
+10
+
+1
+
+
+230.00
+
+.
+10' x 20'
+Non-Climate
+10
+20
+
+2
+
+
+333.00
 
 -
 ExtraSpace
 https://www.extraspace.com/
 ~
 Austin Self Storage in North Loop
+https://www.extraspace.com/Storage/Facilities/US/Texas/Austin/1000001041/Facility.aspx
 1000 E 50th St, Austin, TX 78751
 
 
@@ -129,21 +153,10 @@ Climate
 5
 5
 
-1
+2
 
 
 48.00
-
-.
-5' x 10'
-Climate
-5
-10
-
-1
-
-
-77.00
 
 .
 10' x 5'
@@ -151,43 +164,10 @@ Climate
 10
 5
 
-1
+2
 
 
 77.00
-
-.
-10' x 7'
-Climate
-10
-7
-
-1
-
-
-105.00
-
-.
-5' x 15'
-Climate
-5
-15
-
-1
-
-
-105.00
-
-.
-5' x 5'
-Climate
-5
-5
-
-1
-
-
-58.00
 
 .
 5' x 10'
@@ -199,6 +179,39 @@ Climate
 
 
 111.00
+
+.
+10' x 7'
+Climate
+10
+7
+
+2
+
+
+106.00
+
+.
+10' x 8'
+Climate
+10
+8
+
+2
+
+
+106.00
+
+.
+5' x 5'
+Climate
+5
+5
+
+1
+
+
+58.00
 
 .
 10' x 5'
@@ -231,17 +244,6 @@ Climate
 1
 
 
-105.00
-
-.
-10' x 8'
-Climate
-10
-8
-
-1
-
-
 126.00
 
 .
@@ -261,7 +263,7 @@ Climate
 10
 15
 
-1
+2
 
 
 173.00
@@ -272,7 +274,7 @@ Climate
 15
 10
 
-1
+2
 
 
 173.00
@@ -294,7 +296,7 @@ Climate
 10
 20
 
-1
+2
 
 
 173.00
@@ -308,7 +310,7 @@ Climate
 1
 
 
-245.00
+247.00
 
 .
 10' x 25'
@@ -316,7 +318,7 @@ Climate
 10
 25
 
-1
+2
 
 
 205.00
@@ -327,7 +329,7 @@ Climate
 10
 30
 
-1
+2
 
 
 230.00
@@ -341,7 +343,7 @@ Climate
 1
 
 
-372.00
+377.00
 
 .
 10' x 30'
@@ -352,7 +354,7 @@ Climate
 1
 
 
-372.00
+377.00
 
 .
 7' x 5'
@@ -360,7 +362,7 @@ Climate
 7
 5
 
-1
+2
 
 
 0.00
@@ -371,7 +373,18 @@ Climate
 8
 5
 
-1
+2
+
+
+0.00
+
+.
+5' x 8'
+Climate
+5
+8
+
+2
 
 
 0.00
@@ -388,12 +401,23 @@ Climate
 0.00
 
 .
-5' x 8'
+5' x 10'
 Climate
 5
-8
+10
 
-1
+2
+
+
+0.00
+
+.
+5' x 15'
+Climate
+5
+15
+
+2
 
 
 0.00
@@ -404,7 +428,7 @@ Climate
 10
 10
 
-1
+2
 
 
 0.00
@@ -415,7 +439,7 @@ Climate
 5
 20
 
-1
+2
 
 
 0.00
@@ -447,6 +471,7 @@ Green Storage Plus
 https://https://www.greenstorageplus.com/
 ~
 Green Storage Plus
+https://www.greenstorageplus.com/self-storage-spicewood-tx-f7744
 5216 Electric Ave, Spicewood, TX 78669
 
 
@@ -779,6 +804,7 @@ Store-It-All Storage
 https://www.amaxselfstorage.com/
 ~
 Store It All Self Storage - Lakeway
+https://www.selfstoragelakeway.com/self-storage/tx/lakeway/unit-sizes-prices#/units?category=all
 15402 Kollmeyer Dr, Lakeway, TX 78734
 
 
@@ -822,7 +848,7 @@ https://www.selfstoragelakeway.com/self-storage/tx/lakeway/unit-sizes-prices#/un
 
 .
 5' x 5'
-Non-Climate
+Climate
 5
 5
 
@@ -840,11 +866,22 @@ Non-Climate
 1
 
 
-80.00
+0.00
 
 .
 5' x 10'
 Non-Climate
+5
+10
+
+1
+
+
+80.00
+
+.
+5' x 10'
+Climate
 5
 10
 
@@ -854,10 +891,10 @@ Non-Climate
 109.00
 
 .
-5' x 10'
-Non-Climate
+5' x 15'
+Climate
 5
-10
+15
 
 1
 
@@ -865,10 +902,10 @@ Non-Climate
 129.00
 
 .
-5' x 15'
+10' x 10'
 Non-Climate
-5
-15
+10
+10
 
 1
 
@@ -877,7 +914,7 @@ Non-Climate
 
 .
 10' x 10'
-Non-Climate
+Climate
 10
 10
 
@@ -887,10 +924,10 @@ Non-Climate
 159.00
 
 .
-10' x 10'
+10' x 15'
 Non-Climate
 10
-10
+15
 
 1
 
@@ -910,7 +947,7 @@ Non-Climate
 
 .
 10' x 15'
-Non-Climate
+Climate
 10
 15
 
@@ -920,10 +957,10 @@ Non-Climate
 205.00
 
 .
-10' x 15'
+10' x 20'
 Non-Climate
 10
-15
+20
 
 1
 
@@ -939,22 +976,11 @@ Non-Climate
 1
 
 
-285.00
+0.00
 
 .
 10' x 20'
-Non-Climate
-10
-20
-
-1
-
-
-139.00
-
-.
-10' x 20'
-Non-Climate
+Climate
 10
 20
 
@@ -976,14 +1002,14 @@ Non-Climate
 
 .
 10' x 25'
-Non-Climate
+Climate
 10
 25
 
 1
 
 
-0.00
+285.00
 
 .
 10' x 25'
@@ -1005,7 +1031,7 @@ Non-Climate
 1
 
 
-0.00
+139.00
 
 .
 10' x 30'
@@ -1089,6 +1115,7 @@ Cubesmart
 https://www.cubesmart.com/
 ~
 CubeSmart Self Storage of Lakeway
+https://www.cubesmart.com/texas-self-storage/lakeway-self-storage/3190.html
 15616 Stewart Road, Lakeway, TX 78734
 
 
@@ -1150,7 +1177,7 @@ Non-Climate
 1
 
 
-64.80
+63.00
 
 .
 5' x 10'
@@ -1185,22 +1212,12 @@ Non-Climate
 
 91.80
 
-.
-10' x 15'
-Non-Climate
-10
-15
-
-1
-
-
-175.10
-
 -
 ExtraSpace
 https://www.extraspace.com/
 ~
 Austin Self Storage at 6412 Burnet Rd.
+https://www.extraspace.com/Storage/Facilities/US/Texas/Austin/500878/Facility.aspx
 6412 Burnet Rd, Austin, TX 78757
 
 
@@ -1248,7 +1265,7 @@ Climate
 5
 5
 
-1
+2
 
 
 64.00
@@ -1259,7 +1276,7 @@ Climate
 5
 7
 
-1
+2
 
 
 91.00
@@ -1270,32 +1287,32 @@ Climate
 5
 10
 
-1
+2
 
 
 103.00
 
 .
-10' x 5'
+10' x 7'
 Climate
 10
-5
-
-1
-
-
-103.00
-
-.
-7' x 10'
-Climate
 7
-10
 
-1
+2
 
 
 124.00
+
+.
+5' x 15'
+Climate
+5
+15
+
+2
+
+
+129.00
 
 .
 10' x 3'
@@ -1320,28 +1337,6 @@ Climate
 129.00
 
 .
-10' x 7'
-Climate
-10
-7
-
-1
-
-
-124.00
-
-.
-5' x 15'
-Climate
-5
-15
-
-1
-
-
-129.00
-
-.
 10' x 10'
 Climate
 10
@@ -1350,7 +1345,7 @@ Climate
 1
 
 
-158.00
+218.00
 
 .
 7' x 15'
@@ -1358,7 +1353,7 @@ Non-Climate
 7
 15
 
-1
+2
 
 
 55.00
@@ -1369,7 +1364,7 @@ Non-Climate
 8
 18
 
-1
+2
 
 
 69.00
@@ -1380,18 +1375,18 @@ Climate
 10
 15
 
-1
+2
 
 
-205.00
+216.00
 
 .
 8' x 20'
-Non-Climate
+RV Parking
 8
 20
 
-1
+2
 
 
 74.00
@@ -1402,7 +1397,7 @@ Non-Climate
 9
 18
 
-1
+2
 
 
 75.00
@@ -1416,7 +1411,7 @@ Climate
 1
 
 
-358.00
+349.00
 
 .
 10' x 30'
@@ -1427,7 +1422,7 @@ Climate
 1
 
 
-419.00
+409.00
 
 .
 10' x 40'
@@ -1435,21 +1430,10 @@ Climate
 10
 40
 
-1
+2
 
 
 574.00
-
-.
-4' x 10'
-Climate
-4
-10
-
-1
-
-
-0.00
 
 .
 10' x 4'
@@ -1457,7 +1441,18 @@ Climate
 10
 4
 
-1
+2
+
+
+0.00
+
+.
+4' x 10'
+Climate
+4
+10
+
+2
 
 
 0.00
@@ -1468,7 +1463,18 @@ Non-Climate
 5
 10
 
-1
+2
+
+
+0.00
+
+.
+10' x 5'
+Climate
+10
+5
+
+2
 
 
 0.00
@@ -1479,7 +1485,7 @@ Non-Climate
 10
 5
 
-1
+2
 
 
 0.00
@@ -1496,12 +1502,12 @@ Climate
 0.00
 
 .
-10' x 10'
+7' x 10'
 Climate
-10
+7
 10
 
-1
+2
 
 
 0.00
@@ -1512,7 +1518,18 @@ Climate
 10
 10
 
-1
+2
+
+
+0.00
+
+.
+10' x 10'
+Climate
+10
+10
+
+2
 
 
 0.00
@@ -1534,7 +1551,7 @@ Climate
 10
 20
 
-1
+2
 
 
 0.00
@@ -1545,7 +1562,7 @@ Climate
 20
 15
 
-1
+2
 
 
 0.00
@@ -1556,18 +1573,18 @@ Climate
 15
 20
 
-1
+2
 
 
 0.00
 
 .
 12' x 30'
-Non-Climate
+RV Parking
 12
 30
 
-1
+2
 
 
 0.00
@@ -1578,7 +1595,7 @@ Climate
 10
 40
 
-1
+2
 
 
 0.00
@@ -1589,7 +1606,7 @@ Climate
 20
 20
 
-1
+2
 
 
 0.00
@@ -1600,7 +1617,7 @@ Climate
 20
 20
 
-1
+2
 
 
 0.00
@@ -1610,6 +1627,7 @@ ExtraSpace
 https://www.extraspace.com/
 ~
 Austin Self Storage at 2631 S. Capital of Texas Hwy.
+https://www.extraspace.com/Storage/Facilities/US/Texas/Austin/1000000408/Facility.aspx
 2631 S Capital of Texas Hwy, Austin, TX 78746
 
 
@@ -1657,7 +1675,7 @@ Climate
 5
 5
 
-1
+2
 
 
 31.00
@@ -1668,29 +1686,18 @@ Climate
 5
 10
 
-1
+2
 
 
 87.00
 
 .
-10' x 5'
+7' x 10'
 Climate
-10
-5
-
-1
-
-
-87.00
-
-.
-10' x 7'
-Climate
-10
 7
+10
 
-1
+2
 
 
 110.00
@@ -1701,7 +1708,18 @@ Climate
 5
 15
 
-1
+2
+
+
+116.00
+
+.
+15' x 5'
+Climate
+15
+5
+
+2
 
 
 116.00
@@ -1712,7 +1730,7 @@ Climate
 5
 5
 
-1
+2
 
 
 47.00
@@ -1729,26 +1747,15 @@ Climate
 52.00
 
 .
-10' x 5'
+10' x 10'
 Climate
 10
-5
+10
 
-1
-
-
-89.00
-
-.
-15' x 5'
-Climate
-15
-5
-
-1
+2
 
 
-116.00
+170.00
 
 .
 10' x 10'
@@ -1756,54 +1763,10 @@ Climate
 10
 10
 
-1
+2
 
 
-176.00
-
-.
-10' x 10'
-Climate
-10
-10
-
-1
-
-
-176.00
-
-.
-10' x 15'
-Climate
-10
-15
-
-1
-
-
-238.00
-
-.
-15' x 10'
-Climate
-15
-10
-
-1
-
-
-238.00
-
-.
-10' x 15'
-Climate
-10
-15
-
-1
-
-
-321.00
+170.00
 
 .
 9' x 18'
@@ -1811,18 +1774,18 @@ Non-Climate
 9
 18
 
-1
+2
 
 
 58.00
 
 .
 12' x 20'
-Non-Climate
+RV Parking
 12
 20
 
-1
+2
 
 
 86.00
@@ -1833,10 +1796,10 @@ Climate
 10
 30
 
-1
+2
 
 
-543.00
+544.00
 
 .
 2' x 2'
@@ -1858,7 +1821,7 @@ Climate
 1
 
 
-89.00
+90.00
 
 .
 5' x 2'
@@ -1960,6 +1923,17 @@ Climate
 0.00
 
 .
+10' x 5'
+Climate
+10
+5
+
+2
+
+
+0.00
+
+.
 5' x 10'
 Climate
 5
@@ -1982,12 +1956,23 @@ Climate
 0.00
 
 .
-7' x 10'
+10' x 5'
 Climate
-7
 10
+5
 
 1
+
+
+0.00
+
+.
+10' x 7'
+Climate
+10
+7
+
+2
 
 
 0.00
@@ -2020,7 +2005,7 @@ Climate
 12
 10
 
-1
+2
 
 
 0.00
@@ -2031,7 +2016,51 @@ Climate
 10
 12
 
-1
+2
+
+
+0.00
+
+.
+15' x 10'
+Climate
+15
+10
+
+2
+
+
+0.00
+
+.
+10' x 15'
+Climate
+10
+15
+
+2
+
+
+0.00
+
+.
+10' x 15'
+Climate
+10
+15
+
+2
+
+
+0.00
+
+.
+15' x 10'
+Climate
+15
+10
+
+2
 
 
 0.00
@@ -2059,23 +2088,12 @@ Climate
 0.00
 
 .
-15' x 10'
-Climate
-15
-10
-
-1
-
-
-0.00
-
-.
 20' x 10'
 Climate
 20
 10
 
-1
+2
 
 
 0.00
@@ -2086,7 +2104,7 @@ Climate
 10
 20
 
-1
+2
 
 
 0.00
@@ -2097,7 +2115,7 @@ Climate
 10
 20
 
-1
+2
 
 
 0.00
@@ -2108,7 +2126,7 @@ Climate
 20
 10
 
-1
+2
 
 
 0.00
@@ -2141,7 +2159,7 @@ Climate
 15
 17
 
-1
+2
 
 
 0.00
@@ -2173,6 +2191,7 @@ ExtraSpace
 https://www.extraspace.com/
 ~
 Austin Self Storage at 9300 Brodie Ln.
+https://www.extraspace.com/Storage/Facilities/US/Texas/Austin/1000000409/Facility.aspx
 9300 Brodie Ln, Austin, TX 78748
 
 
@@ -2216,44 +2235,33 @@ https://www.extraspace.com/Storage/Facilities/US/Texas/Austin/1000000409/Facilit
 
 .
 5' x 10'
-Non-Climate
+Parking
 5
 10
 
-1
+2
 
 
 73.00
 
 .
-10' x 10'
+5' x 10'
 Climate
+5
 10
-10
 
-1
-
-
-152.00
-
-.
-10' x 15'
-Climate
-10
-15
-
-1
+2
 
 
-164.00
+91.00
 
 .
 10' x 20'
-Non-Climate
+RV Parking
 10
 20
 
-1
+2
 
 
 46.00
@@ -2267,29 +2275,7 @@ Climate
 1
 
 
-96.00
-
-.
-5' x 10'
-Climate
-5
-10
-
-1
-
-
-107.00
-
-.
-10' x 20'
-Climate
-10
-20
-
-1
-
-
-306.00
+106.00
 
 .
 5' x 5'
@@ -2297,7 +2283,7 @@ Climate
 5
 5
 
-1
+2
 
 
 0.00
@@ -2319,18 +2305,18 @@ Climate
 7
 7
 
-1
+2
 
 
 0.00
 
 .
 7' x 10'
-Non-Climate
+Parking
 7
 10
 
-1
+2
 
 
 0.00
@@ -2341,7 +2327,7 @@ Climate
 7
 10
 
-1
+2
 
 
 0.00
@@ -2363,7 +2349,18 @@ Climate
 7
 12
 
-1
+2
+
+
+0.00
+
+.
+10' x 10'
+Climate
+10
+10
+
+2
 
 
 0.00
@@ -2381,11 +2378,22 @@ Climate
 
 .
 10' x 10'
-Non-Climate
+Parking
 10
 10
 
-1
+2
+
+
+0.00
+
+.
+7' x 15'
+Climate
+7
+15
+
+2
 
 
 0.00
@@ -2403,22 +2411,22 @@ Climate
 
 .
 7' x 15'
-Climate
+Parking
 7
 15
 
-1
+2
 
 
 0.00
 
 .
-7' x 15'
-Non-Climate
-7
+10' x 15'
+Climate
+10
 15
 
-1
+2
 
 
 0.00
@@ -2436,22 +2444,22 @@ Climate
 
 .
 10' x 15'
-Non-Climate
+Parking
 10
 15
 
-1
+2
 
 
 0.00
 
 .
 10' x 20'
-Non-Climate
+Parking
 10
 20
 
-1
+2
 
 
 0.00
@@ -2462,7 +2470,18 @@ Climate
 10
 20
 
-1
+2
+
+
+0.00
+
+.
+20' x 10'
+Climate
+20
+10
+
+2
 
 
 0.00
@@ -2479,10 +2498,10 @@ Climate
 0.00
 
 .
-20' x 10'
+10' x 20'
 Climate
-20
 10
+20
 
 1
 
@@ -2491,22 +2510,22 @@ Climate
 
 .
 12' x 20'
-Non-Climate
+Parking
 12
 20
 
-1
+2
 
 
 0.00
 
 .
 10' x 30'
-Non-Climate
+Parking
 10
 30
 
-1
+2
 
 
 0.00

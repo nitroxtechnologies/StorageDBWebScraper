@@ -22,6 +22,7 @@ class Facility:
         info = "-\n" + self.company + "\n"
         info += self.companywebsite + "\n~\n"
         info += self.name + "\n"
+        info += self.website + "\n" # website
         # members = [attr for attr in dir(self) if not callable(getattr(self, attr)) and not attr.startswith("__")]
         # print(members)
         info += self.address + "\n" # street address 1
