@@ -66,6 +66,7 @@ class Facility:
         info += "\n"                # SC
         info += "\n"                # rating
         info += "\n"                # promos
+        self.units = set(self.units)
         for u in self.units:
             info += u.info()
         return info

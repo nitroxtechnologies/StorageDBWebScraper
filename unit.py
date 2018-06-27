@@ -34,6 +34,12 @@ class Unit:
         self.floor = floor
         self.setDimensions(name)
 
+    def __eq__(self, other):
+        return self.name==other.name and self.floor == other.floor and self.type == other.type
+    def __hash__(self):
+        return hash(('name', self.name,
+                     'type', self.type, 'floor', self.floor))
+
     def info(self):
         info = ".\n"
         info += self.name + "\n"

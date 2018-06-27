@@ -359,12 +359,20 @@ def parse_storeitall(website):
             else:
                 units[i].setPrice(prices[0].text.strip())
 
-        unitAmenities = html.find_all("span", attrs={"class":"sss-unit-amenities"})
-        for i, p in enumerate(unitAmenities):
-            if "Climate Control" in p.text:
-                units[i].setType("Climate")
-            else:
+        # unitAmenities = html.find_all("span", attrs={"class":"sss-unit-amenities"})
+        # for i, p in enumerate(unitAmenities):
+        #     if "Climate Control" in p.text:
+        #         units[i].setType("Climate")
+        #     else:
+        #         units[i].setType("Non-Climate")
+        unitTypes = html.find_all("div", attrs={"class":"sss-unit-description"})
+        for i, t in enumerate(unitTypes):
+            if "Non Climate" in t.text:
                 units[i].setType("Non-Climate")
+            elif "Parking" in t.text:
+                units[i].setType("Parking")
+            else:
+                units[i].setType("Climate")
 
     finally:
         browser.quit()
